@@ -5,19 +5,35 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+    public GameObject Bullet;
+      
+    public Transform posSpawn;
     public float velocidadJugador;
+      public float velocidadRotJugador;
     // Start is called before the first frame update
     public GameObject CamOne;
     public GameObject CameTwo;
-   
+     public float horSpeed = 2.0f;
 
     // Update is called once per frame
     void Update()
     {
         Movement();
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.KeypadEnter)){
             ToggleCamera();
         }
+
+        
+         float h = horSpeed * Input.GetAxis("Mouse X");
+
+            transform.Rotate(0, h, 0);
+
+        if(Input.GetKeyDown(KeyCode.Space)){
+            Disparo();
+        }
+
+   
+        
     }
 
     void Movement(){
@@ -39,4 +55,14 @@ public class Player : MonoBehaviour
         }
 
     }
+
+
+        void Disparo(){
+          Instantiate(Bullet, posSpawn.position, transform.rotation);
+      
+    }
+
+   
+
+
 }
