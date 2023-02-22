@@ -5,15 +5,19 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
-    public GameObject Bullet;
+    public GameObject Bullet = null;
       
     public Transform posSpawn;
     public float velocidadJugador;
+    private float velocidadPlayerOri;
       public float velocidadRotJugador;
     // Start is called before the first frame update
     public GameObject CamOne;
     public GameObject CameTwo;
      public float horSpeed = 2.0f;
+
+     public Animator anim;
+     
 
     // Update is called once per frame
     void Update()
@@ -25,21 +29,32 @@ public class Player : MonoBehaviour
 
         
          float h = horSpeed * Input.GetAxis("Mouse X");
+         transform.Rotate(0, h*velocidadRotJugador, 0);
 
-            transform.Rotate(0, h, 0);
+        // if(Input.GetKeyDown(KeyCode.Space)){
+        //     Disparo();
+        // }
 
-        if(Input.GetKeyDown(KeyCode.Space)){
-            Disparo();
+        if(Input.GetKeyDown(KeyCode.F)){
+            anim.SetTrigger("GrabTorch");
+     
         }
-
-   
-        
     }
 
     void Movement(){
           float hor= Input.GetAxis("Horizontal");
         float ver= Input.GetAxis("Vertical");
         Vector3 movJugador = new Vector3(hor,0,ver);
+
+    
+        if(hor !=0 || ver !=0){
+            anim.SetFloat("HorizontalAnim",ver);
+            anim.SetFloat("VerticalAnim",hor);
+        }
+        else{
+        
+        }
+
         transform.Translate(movJugador*velocidadJugador*Time.deltaTime);
     }
 
