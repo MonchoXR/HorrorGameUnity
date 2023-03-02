@@ -13,10 +13,13 @@ public class Enemy : MonoBehaviour
       float velocityToward;
       float dist;
       public float distanceEnemy;
+
+        Quaternion Orirotation;
     // Start is called before the first frame update
     void Start()
     {
         velocityToward = velocityTowardOri;
+    //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);
     }
 
     // Update is called once per frame
@@ -31,7 +34,8 @@ public class Enemy : MonoBehaviour
 
         // transform.LookAt(player.transform.position);
         Quaternion rotation = Quaternion.LookRotation( player.transform.position - transform.position);
-         transform.rotation = Quaternion.Slerp(transform.rotation, rotation, Time.deltaTime * speedLerpRotation);
+            Orirotation = Quaternion.Euler(0, rotation.eulerAngles.y, 0);
+         transform.rotation = Quaternion.Slerp(transform.rotation, Orirotation, Time.deltaTime * speedLerpRotation);
     }
 
     void MoveTowardPlayer(){
