@@ -13,10 +13,12 @@ public class Enemy : MonoBehaviour
       float velocityToward;
       float dist;
       public float distanceEnemy;
+      public float vida = 20f;
+      public GameObject explosion;
+      
 
-        Quaternion Orirotation;
-    // Start is called before the first frame update
-    void Start()
+     Quaternion Orirotation;
+       void Start()
     {
         velocityToward = velocityTowardOri;
     //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);
@@ -28,6 +30,7 @@ public class Enemy : MonoBehaviour
         // LookAtPlayer();
         // MoveTowardPlayer();
         ChooseEnemy();
+        VidaEnemy();
     }
 
     void LookAtPlayer(){
@@ -67,6 +70,17 @@ public class Enemy : MonoBehaviour
 
             default:
             break;
+        }
+    }
+
+    void VidaEnemy()
+    {
+        if(vida <=0)
+        {
+            GameObject explosionEnemigo = Instantiate(explosion, transform.position, transform.rotation);
+            
+            Destroy(explosionEnemigo,3f);
+            Destroy(gameObject);
         }
     }
 }

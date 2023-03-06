@@ -14,8 +14,9 @@ public class Lamps : MonoBehaviour
     public AudioSource _audioSource;
     public AudioClip _turnOffLight;
     public bool timerActive = false;
-    bool locklight=false;
     public float timeLamp;
+
+
 
     // Start is called before the first frame update
     void Start()

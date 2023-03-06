@@ -74,37 +74,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 100100, guid: f5a9bd478ca094495a4520e37f57420d, type: 3}
   m_PrefabInstance: {fileID: 7053629676028158042}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8476409437518832179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7053629676028061534}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9bcd728f02b05647a6d4bca5bdbb2b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  enemy: 0
-  speedLerpRotation: 1
-  velocityTowardOri: 1
-  distanceEnemy: 2
---- !u!136 &280787811992595542
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7053629676028061534}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.17
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.13, z: 0}
 --- !u!54 &5940118222713222153
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -121,3 +90,36 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!136 &280787811992595542
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053629676028061534}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.17
+  m_Height: 1
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.13, z: 0}
+--- !u!114 &8476409437518832179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7053629676028061534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9bcd728f02b05647a6d4bca5bdbb2b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 4028076310531455511, guid: 487435944c763284f8a56ddd21fd8dbe, type: 3}
+  enemy: 0
+  speedLerpRotation: 1
+  velocityTowardOri: 1
+  distanceEnemy: 2
+  vida: 20
+  explosion: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
