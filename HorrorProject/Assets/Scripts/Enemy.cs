@@ -13,10 +13,13 @@ public class Enemy : MonoBehaviour
       float velocityToward;
       float dist;
       public float distanceEnemy;
-
-        Quaternion Orirotation;
-    // Start is called before the first frame update
-    void Start()
+      public float vida = 20f;
+      public GameObject explosion;
+    public AudioSource _audioSource;
+     public AudioClip _clipDead;
+    public Animator anim;
+     Quaternion Orirotation;
+       void Start()
     {
         velocityToward = velocityTowardOri;
     //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);
@@ -28,6 +31,7 @@ public class Enemy : MonoBehaviour
         // LookAtPlayer();
         // MoveTowardPlayer();
         ChooseEnemy();
+        VidaEnemy();
     }
 
     void LookAtPlayer(){
@@ -68,5 +72,27 @@ public class Enemy : MonoBehaviour
             default:
             break;
         }
+    }
+
+    void VidaEnemy()
+    {
+        if(vida <=0)
+        {
+            
+            anim.SetTrigger("Died");
+            // GameObject explosionEnemigo = Instantiate(explosion, transform.position, transform.rotation);
+            //      Destroy(explosionEnemigo,3f);
+            AudioPlay(_clipDead);
+         
+            velocityTowardOri=0;
+            Destroy(gameObject,4f);
+            vida=20f;
+        }
+    }
+
+      void AudioPlay(AudioClip _clipTest)
+    {
+        _audioSource.clip = _clipTest;
+        _audioSource.Play();
     }
 }

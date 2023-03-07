@@ -1,23 +1,28 @@
+using System.Collections;
+using System.Collections.Generic;
+
 using UnityEngine;
 
 public class PlayerFPS : MonoBehaviour
 
 {
 
-//Player Movement
+    //Player Movement
 
-public float velocidadMovimiento = 3f;
+    public float velocidadMovimiento = 3f;
 
-// public Rigidbody rb;
+    // public Rigidbody rb;
 
-//Player Look Rotation
+    //Player Look Rotation
 
-public Vector2 sensibilidadMouse;
-public Transform Camera;
-public Transform playerBody;
+    public Vector2 sensibilidadMouse;
+    public Transform Camera;
+    public Transform playerBody;
 
-private Vector3 rotate;
-
+    private Vector3 rotate;
+    public List<Granada> _inventarioGranada = new List<Granada>();
+    public Granada myGranada;
+    public int totalGranada=0;
     void Start()
 
     {
@@ -73,4 +78,18 @@ public void BloqueoCusor()
         Cursor.visible = false;
     }
 
+ private void OnCollisionEnter(Collision collision)
+ {
+
+    if(collision.gameObject.tag ==  "Grenade")
+    {
+         _inventarioGranada.Add(myGranada);
+         Destroy(collision.gameObject);
+         totalGranada ++;
+    }
+  
+ }
 }
+
+
+

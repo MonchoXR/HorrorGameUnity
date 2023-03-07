@@ -20,7 +20,18 @@ public class Gun : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    {      RaycastHit hit;
+        if(Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+        {
+          
+            if(hit.transform.tag == "Enemy")
+            {
+              Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
+            }
+            else{
+                 Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.red,1f,false);
+            }
+        }
         if(Input.GetMouseButtonDown(0))
         {
             Disparar();
@@ -35,13 +46,14 @@ public class Gun : MonoBehaviour
           FlashEffect.Play();
         if(Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
+          
             if(hit.transform.tag == "Enemy")
             {
                 hit.transform.gameObject.GetComponent<Enemy>().vida -=10f;
                 AudioPlay(_clip_Hit);
-                Debug.Log("entre");
+                 Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
                 GameObject impactEnemy = Instantiate(impactEffects, hit.point,Quaternion.LookRotation(hit.normal));
-                   Debug.Log("entre1");
+                 
                 Destroy(impactEnemy,2f);
             }
         }
