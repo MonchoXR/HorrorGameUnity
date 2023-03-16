@@ -12,6 +12,8 @@ public class Gun : MonoBehaviour
      public AudioSource _audioSource;
      public AudioClip _clipDisparo;
      public AudioClip _clip_Hit;
+
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +52,7 @@ public class Gun : MonoBehaviour
             if(hit.transform.tag == "Enemy")
             {
                 hit.transform.gameObject.GetComponent<Enemy>().vida -=10f;
+                PlayerFPS.vidaJugador-=25f;
                 AudioPlay(_clip_Hit);
                  Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
                 GameObject impactEnemy = Instantiate(impactEffects, hit.point,Quaternion.LookRotation(hit.normal));

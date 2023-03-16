@@ -4,5 +4,11 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: 32f122dd321a7914d8789c4ca74128e6
+  - enabled: 1
+    path: Assets/Scenes/HorrorHospital FPS.unity
+    guid: 0218be33a6d93954d9918a4a6a2ebccb
   m_configObjects: {}

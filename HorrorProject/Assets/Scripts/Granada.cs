@@ -23,15 +23,25 @@ public class Granada : MonoBehaviour
         //Aplicar para cada Collider
         foreach(Collider near in collider)
         {
-            Rigidbody rb = near.GetComponent<Rigidbody>();
+           Rigidbody  rb = near.GetComponent<Rigidbody>();
 
+         
             if(rb != null) //Si es que tienen rigiBody
             {
+              
                 //Agregar fuerza de explision
                 rb.AddExplosionForce(explosionForce, transform.position, radius, 1f, ForceMode.Impulse );
+          
+            }
+
+            Enemy destEnemy  = near.GetComponent<Enemy>();
+            if(destEnemy!= null)
+            {
+                destEnemy.vida =-20;
             }
         }
         Instantiate(efectoExplision, transform.position, transform.rotation);
+
         Destroy(gameObject);
     }
 }

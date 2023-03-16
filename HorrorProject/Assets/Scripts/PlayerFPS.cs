@@ -23,6 +23,7 @@ public class PlayerFPS : MonoBehaviour
     public List<Granada> _inventarioGranada = new List<Granada>();
     public Granada myGranada;
     public int totalGranada=0;
+    public static float vidaJugador =100f;
     void Start()
 
     {

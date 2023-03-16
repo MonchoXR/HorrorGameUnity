@@ -84,8 +84,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   efectoExplision: {fileID: 100010, guid: e0609132424a24844b1d53ad3d704fd9, type: 3}
   delay: 3
-  radius: 20
-  explosionForce: 10
+  radius: 10
+  explosionForce: 5
 --- !u!1 &760726833461061828
 GameObject:
   m_ObjectHideFlags: 0

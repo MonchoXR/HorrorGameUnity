@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.AI;
 using UnityEngine;
 public enum TypeEnemy{
     Enemigo1,Enemigo2
@@ -15,9 +16,11 @@ public class Enemy : MonoBehaviour
       public float distanceEnemy;
       public float vida = 20f;
       public GameObject explosion;
-    public AudioSource _audioSource;
-     public AudioClip _clipDead;
-    public Animator anim;
+      public AudioSource _audioSource;
+      public AudioClip _clipDead;
+     public Animator anim;
+
+     public NavMeshAgent agent;
      Quaternion Orirotation;
        void Start()
     {
@@ -64,9 +67,10 @@ public class Enemy : MonoBehaviour
             break;
             
             case TypeEnemy.Enemigo2:
-            MoveTowardPlayer();
-            LookAtPlayer();
-            DistanceBtwObj();
+            // MoveTowardPlayer();
+            // LookAtPlayer();
+            EnemyNavMesh();
+            // DistanceBtwObj();
             break;
 
             default:
@@ -94,5 +98,10 @@ public class Enemy : MonoBehaviour
     {
         _audioSource.clip = _clipTest;
         _audioSource.Play();
+    }
+
+    private void EnemyNavMesh()
+    {
+        agent.SetDestination(player.transform.position);
     }
 }
