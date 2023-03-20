@@ -7,7 +7,7 @@ public class ParedCollision :  MonoBehaviour
     public GameObject LampObject;
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag ==  "Player")
         {
             LampObject.GetComponent<Lamps>().timerActive=true;
             Debug.Log("Entre " + collision.gameObject.name);
@@ -15,7 +15,7 @@ public class ParedCollision :  MonoBehaviour
     }
     private void OnTriggerExit(Collider collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.tag ==  "Player")
         {
             Debug.Log("Sali " + collision.gameObject.name);
         }

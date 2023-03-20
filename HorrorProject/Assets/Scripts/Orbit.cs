@@ -1,4 +1,4 @@
-﻿
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -86,11 +86,12 @@ public class Orbit : MonoBehaviour {
 	// 	{
 			yield return new WaitForSeconds(18f);
 			Debug.Log("entre zoom");
+			
 			background2.SetActive(true);
 
 			AudioPlay(_Painting);
 			zoom=true;
-				SoundSpark.GetComponent<AudioSource>().Play();
+			SoundSpark.GetComponent<AudioSource>().Play();
 			yield return new WaitForSeconds(2.0f);
 			Debug.Log("entre zoomin");
 			

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Gun : MonoBehaviour
+public class Gun : Weapon
 {
     public float range = 100f;
     public Camera fpscam;
@@ -21,22 +21,26 @@ public class Gun : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {      RaycastHit hit;
-        if(Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
+    public override void Update()
+    {
+        base.Update();
+        RaycastHit hit;
+        if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
-          
-            if(hit.transform.tag == "Enemy")
+
+            if (hit.transform.tag == "Enemy")
             {
-              Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
+                Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward * 100f, Color.green, 1f, false);
             }
-            else{
-                 Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.red,1f,false);
+            else
+            {
+                Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward * 100f, Color.red, 1f, false);
             }
         }
-        if(Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) &&  PlayerCharacter.GetComponent<Animator>().GetBool("bToRifle"))
         {
             Disparar();
+            Debug.Log("Disparo");
         }
     }
 
@@ -52,7 +56,7 @@ public class Gun : MonoBehaviour
             if(hit.transform.tag == "Enemy")
             {
                 hit.transform.gameObject.GetComponent<Enemy>().vida -=10f;
-                PlayerFPS.vidaJugador-=25f;
+            
                 AudioPlay(_clip_Hit);
                  Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
                 GameObject impactEnemy = Instantiate(impactEffects, hit.point,Quaternion.LookRotation(hit.normal));

@@ -21,19 +21,25 @@ public class Enemy : MonoBehaviour
      public Animator anim;
 
      public NavMeshAgent agent;
+
      Quaternion Orirotation;
-       void Start()
+
+     public bool followEnemy= true;
+    public virtual void Start()
     {
         velocityToward = velocityTowardOri;
-    //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);
+    //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);4
+        
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         // LookAtPlayer();
         // MoveTowardPlayer();
-        ChooseEnemy();
+        
+       ChooseEnemy();
+      
         VidaEnemy();
     }
 
@@ -69,8 +75,9 @@ public class Enemy : MonoBehaviour
             case TypeEnemy.Enemigo2:
             // MoveTowardPlayer();
             // LookAtPlayer();
-            EnemyNavMesh();
+          
             // DistanceBtwObj();
+              EnemyNavMesh();
             break;
 
             default:
@@ -84,24 +91,34 @@ public class Enemy : MonoBehaviour
         {
             
             anim.SetTrigger("Died");
-            // GameObject explosionEnemigo = Instantiate(explosion, transform.position, transform.rotation);
-            //      Destroy(explosionEnemigo,3f);
+
             AudioPlay(_clipDead);
          
-            velocityTowardOri=0;
+            // velocityTowardOri=0;
+            agent.speed=0.0f;
+    
             Destroy(gameObject,4f);
             vida=20f;
         }
     }
 
-      void AudioPlay(AudioClip _clipTest)
+      public virtual void AudioPlay(AudioClip _clipTest)
     {
-        _audioSource.clip = _clipTest;
-        _audioSource.Play();
+    
     }
 
     private void EnemyNavMesh()
     {
+        if(followEnemy){
         agent.SetDestination(player.transform.position);
+        }
     }
+
+
+
+
+
+
+  
+
 }

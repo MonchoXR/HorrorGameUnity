@@ -17,17 +17,20 @@ public class PlayerFPS : MonoBehaviour
 
     public Vector2 sensibilidadMouse;
     public Transform Camera;
-    public Transform playerBody;
-
+   
     private Vector3 rotate;
     public List<Granada> _inventarioGranada = new List<Granada>();
     public Granada myGranada;
     public int totalGranada=0;
     public static float vidaJugador =100f;
+    
+  
     void Start()
 
     {
-    BloqueoCusor();
+  
+        BloqueoCusor();
+
     }
 
     void Update()
@@ -37,8 +40,9 @@ public class PlayerFPS : MonoBehaviour
         Move();
 
         MouseLook();
+    
         
-
+     
     }
 
     void Move()
