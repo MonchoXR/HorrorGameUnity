@@ -9,9 +9,9 @@ public class Clown : Enemy
     public override void Start()
     {
         base.Start();
-         anim.SetBool("Run",true);
+        // 
 
-           AudioPlay(_clownNoise);
+          
     }
     // public override void Update() {
 
@@ -65,7 +65,15 @@ public class Clown : Enemy
    
     }
 
-    
+     public override void EnemyNavMesh(bool follow)
+    {
+        if(follow){
+            agent.SetDestination(player.transform.position);
+            anim.SetBool("Run",true);
+            AudioPlay(_clownNoise);
+        }
+    }
+
 
 
 }

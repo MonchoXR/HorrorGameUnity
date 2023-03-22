@@ -195,7 +195,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -230,7 +230,9 @@ MonoBehaviour:
   _clipDead: {fileID: 8300000, guid: cf4fa4fb73a94394da647b5fa4cfe6be, type: 3}
   anim: {fileID: 972018518}
   agent: {fileID: 1905620494}
-  followEnemy: 1
+  followEnemy: 0
+  _clipManHurt: {fileID: 8300000, guid: 3f37d5c0ef0114b40b779df6934b0fca, type: 3}
+  _clownNoise: {fileID: 8300000, guid: 428576219c521074b80024c6fb6a6437, type: 3}
 --- !u!1001 &2185976210584591179
 PrefabInstance:
   m_ObjectHideFlags: 0

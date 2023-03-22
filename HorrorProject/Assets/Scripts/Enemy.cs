@@ -24,10 +24,10 @@ public class Enemy : MonoBehaviour
 
      Quaternion Orirotation;
 
-     public bool followEnemy= true;
+     public bool followEnemy= false;
     public virtual void Start()
     {
-        velocityToward = velocityTowardOri;
+        // velocityToward = velocityTowardOri;
     //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);4
         
     }
@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
             // LookAtPlayer();
           
             // DistanceBtwObj();
-              EnemyNavMesh();
+              EnemyNavMesh(followEnemy);
             break;
 
             default:
@@ -107,15 +107,12 @@ public class Enemy : MonoBehaviour
     
     }
 
-    private void EnemyNavMesh()
+   
+
+    public virtual void EnemyNavMesh(bool follow)
     {
-        if(followEnemy){
-        agent.SetDestination(player.transform.position);
-        }
+      
     }
-
-
-
 
 
 

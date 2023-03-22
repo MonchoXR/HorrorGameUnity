@@ -13,7 +13,7 @@ public class Lamps : MonoBehaviour
 
     public AudioSource _audioSource;
     public AudioClip _turnOffLight;
-    public bool timerActive = false;
+    bool timerActive = false;
     public float timeLamp;
 
 
@@ -21,7 +21,7 @@ public class Lamps : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-   
+
         _audioSource.clip = _turnOffLight;
    
     }
@@ -29,7 +29,7 @@ public class Lamps : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-          
+     
         if(timerActive == true ){
             timeLamp+= Time.deltaTime;
             LampOff(); 
@@ -37,6 +37,11 @@ public class Lamps : MonoBehaviour
         }
       
     }
+
+    public void TimerEventFromWall(bool active){
+        timerActive=active;
+    }
+
 
     void LampOff(){
   
