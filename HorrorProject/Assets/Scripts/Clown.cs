@@ -6,6 +6,7 @@ public class Clown : Enemy
 {
      public AudioClip _clipManHurt;
       public AudioClip _clownNoise;
+      
     public override void Start()
     {
         base.Start();
@@ -13,15 +14,7 @@ public class Clown : Enemy
 
           
     }
-    // public override void Update() {
-
-
-    // }
-    public override void AudioPlay(AudioClip _clipTest)
-    {
-         _audioSource.clip = _clipTest;
-         _audioSource.Play();
-    }
+   
 
     private void OnCollisionStay(Collision collision)
     {
@@ -65,14 +58,15 @@ public class Clown : Enemy
    
     }
 
-     public override void EnemyNavMesh(bool follow)
+     public override void EnemyNavMesh(bool followEnemy)
     {
-        if(follow){
+        if(followEnemy){
             agent.SetDestination(player.transform.position);
             anim.SetBool("Run",true);
-            AudioPlay(_clownNoise);
+      
         }
     }
+
 
 
 

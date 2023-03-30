@@ -11,7 +11,11 @@ public class ParedCollisionEvent :  MonoBehaviour
     {
         if (collision.gameObject.tag ==  "Player")
         {
-          ParedEvent.Invoke();
+          if(PlayerFPS.isEnableClamFlash)
+          {
+             ParedEvent.Invoke();
+          }
+       
         }
     }
     private void OnTriggerExit(Collider collision)

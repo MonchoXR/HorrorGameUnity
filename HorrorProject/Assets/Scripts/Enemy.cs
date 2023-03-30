@@ -7,7 +7,8 @@ public enum TypeEnemy{
 }
 public class Enemy : MonoBehaviour
 {
-      public GameObject player;
+      public  GameObject player;
+
       public TypeEnemy enemy;
       public float speedLerpRotation;
       public float velocityTowardOri;
@@ -18,18 +19,26 @@ public class Enemy : MonoBehaviour
       public GameObject explosion;
       public AudioSource _audioSource;
       public AudioClip _clipDead;
+      public AudioClip _attack;
+       public AudioClip _clipShooted;
+        public AudioClip _clipScreaming;
      public Animator anim;
 
      public NavMeshAgent agent;
 
-     Quaternion Orirotation;
 
+
+     Quaternion Orirotation;
+    public static int numeroClowns;
      public bool followEnemy= false;
+
+    
     public virtual void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         // velocityToward = velocityTowardOri;
     //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);4
-        
+        numeroClowns = 6;
     }
 
     // Update is called once per frame
@@ -41,6 +50,8 @@ public class Enemy : MonoBehaviour
        ChooseEnemy();
       
         VidaEnemy();
+
+       
     }
 
     void LookAtPlayer(){
@@ -85,37 +96,46 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void VidaEnemy()
+      public virtual void VidaEnemy()
     {
         if(vida <=0)
         {
-            
+                numeroClowns--;
             anim.SetTrigger("Died");
 
             AudioPlay(_clipDead);
          
             // velocityTowardOri=0;
             agent.speed=0.0f;
-    
+            GetComponent<CapsuleCollider>().enabled=false;
             Destroy(gameObject,4f);
             vida=20f;
         }
+
+       
     }
 
       public virtual void AudioPlay(AudioClip _clipTest)
     {
-    
+        //   _audioSource.clip = _clipTest;
+         _audioSource.PlayOneShot(_clipTest,1f);
     }
+
+        public virtual void AudioStop()
+    {
+        _audioSource.Stop();
+   
+    }
+
 
    
 
-    public virtual void EnemyNavMesh(bool follow)
+    public virtual void EnemyNavMesh(bool followEnemy)
     {
       
     }
 
-
-
+ 
   
 
 }

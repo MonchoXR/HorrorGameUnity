@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-public class PlayerFPS : MonoBehaviour
+public  class PlayerFPS : MonoBehaviour
 
 {
 
@@ -20,15 +20,28 @@ public class PlayerFPS : MonoBehaviour
    
     private Vector3 rotate;
     public List<Granada> _inventarioGranada = new List<Granada>();
+    public List<Battery> _inventarioBattery = new List<Battery>();
     public Granada myGranada;
+    public Battery myBattery;
     public int totalGranada=0;
+    public int totalBattery=0;
+    public static bool isEnableClamFlash =false;
+    public GameObject HudCameraTutoria;
+    public GameObject HudFullBatteriesTutorial;
+    public GameObject HudObjectiveCamera;
+    public GameObject HudObjectiveClowns;
+
+     public GameObject HudObjectiveCameraCompleted;
+
+   
+
     public static float vidaJugador =100f;
     
   
     void Start()
 
     {
-  
+     
         BloqueoCusor();
 
     }
@@ -40,7 +53,10 @@ public class PlayerFPS : MonoBehaviour
         Move();
 
         MouseLook();
-    
+        if(isEnableClamFlash)
+        {
+            HudCameraTutoria.SetActive(false);
+        }
         
      
     }
@@ -86,14 +102,60 @@ public void BloqueoCusor()
  private void OnCollisionEnter(Collision collision)
  {
 
-    if(collision.gameObject.tag ==  "Grenade")
-    {
-         _inventarioGranada.Add(myGranada);
-         Destroy(collision.gameObject);
-         totalGranada ++;
+        if (collision.gameObject.tag == "Grenade")
+        {
+            _inventarioGranada.Add(myGranada);
+            Destroy(collision.gameObject);
+            totalGranada++;
+        }
+
+        if (collision.gameObject.tag == "Battery")
+        {
+            if (isEnableClamFlash && totalBattery <= 5)
+            {
+                totalBattery++;
+ 
+                    HudFullBatteriesTutorial.SetActive(false);
+                    _inventarioBattery.Add(myBattery);
+                    Destroy(collision.gameObject);
+               }
+             
+         
+
+        }
     }
-  
- }
+
+    private void OnTriggerStay(Collider collision)
+	{
+          if (collision.gameObject.tag == "Camera")
+        {
+            HudCameraTutoria.SetActive(true);
+             if(Input.GetKey (KeyCode.E))
+             {
+                isEnableClamFlash = true;
+                HudObjectiveCamera.SetActive(false);
+                HudObjectiveCameraCompleted.SetActive(true);
+                StartCoroutine(Objective());
+                
+                Destroy(collision.gameObject);
+             }
+        
+
+        }
+       
+    }
+
+
+    	IEnumerator Objective()
+	{	
+	
+			yield return new WaitForSeconds(2.0f);
+            HudObjectiveCameraCompleted.SetActive(false);
+		    HudObjectiveClowns.SetActive(true);
+				
+	}
+
+
 }
 
 

@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2185976211178475263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0896378, y: 0, z: 1.82}
-  m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
+  m_LocalScale: {x: 1.2, y: 1, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2185976210584977799}
@@ -80,7 +80,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.209
+  m_Volume: 0.276
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -228,9 +228,12 @@ MonoBehaviour:
   explosion: {fileID: 100006, guid: 4575df893a6e3f64a8283dee38413a34, type: 3}
   _audioSource: {fileID: 972018517}
   _clipDead: {fileID: 8300000, guid: cf4fa4fb73a94394da647b5fa4cfe6be, type: 3}
+  _attack: {fileID: 0}
+  _clipShooted: {fileID: 0}
+  _clipScreaming: {fileID: 0}
   anim: {fileID: 972018518}
   agent: {fileID: 1905620494}
-  followEnemy: 0
+  followEnemy: 1
   _clipManHurt: {fileID: 8300000, guid: 3f37d5c0ef0114b40b779df6934b0fca, type: 3}
   _clownNoise: {fileID: 8300000, guid: 428576219c521074b80024c6fb6a6437, type: 3}
 --- !u!1001 &2185976210584591179
@@ -300,7 +303,8 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: eb5f75ec7790bd14b99a53c5faef6804, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: 77a32863e7db71143ace465657f12120, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 77a32863e7db71143ace465657f12120, type: 3}
 --- !u!1 &2185976210584559087 stripped
 GameObject:

@@ -40,7 +40,7 @@ public class Gun : Weapon
         if (Input.GetMouseButtonDown(0) &&  PlayerCharacter.GetComponent<Animator>().GetBool("bToRifle"))
         {
             Disparar();
-            Debug.Log("Disparo");
+       
         }
     }
 
@@ -52,11 +52,11 @@ public class Gun : Weapon
           FlashEffect.Play();
         if(Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
-          
+            Debug.Log("Disparo en " + hit.collider.gameObject.name);
             if(hit.transform.tag == "Enemy")
             {
                 hit.transform.gameObject.GetComponent<Enemy>().vida -=10f;
-            
+                hit.transform.gameObject.GetComponent<Enemy>().followEnemy =true;
                 AudioPlay(_clip_Hit);
                  Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward*100f, Color.green,1f,false);
                 GameObject impactEnemy = Instantiate(impactEffects, hit.point,Quaternion.LookRotation(hit.normal));

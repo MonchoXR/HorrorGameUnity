@@ -4,17 +4,19 @@ using UnityEngine;
 
 public class Lamps : MonoBehaviour
 {
-    public Light lamp1;
-    public Light lamp2;
-    public Light lamp3;
-    public Light lamp4;
-    public Light lamp5;
+    public GameObject lamp1;
+    public GameObject lamp2;
+    public GameObject lamp3;
+    public GameObject lamp4;
+    public GameObject lamp5;
     public Light lamp6;
 
     public AudioSource _audioSource;
     public AudioClip _turnOffLight;
     bool timerActive = false;
     public float timeLamp;
+
+    public bool startClown = false;
 
 
 
@@ -46,38 +48,39 @@ public class Lamps : MonoBehaviour
     void LampOff(){
   
           
-       if(timeLamp >= 0.0f &&  lamp1.enabled ==true){
-            lamp1.enabled = false;
+       if(timeLamp >= 0.0f &&  lamp1.activeInHierarchy){
+            lamp1.SetActive(false);
              _audioSource.Play();
         }    
 
-        if(timeLamp>=0.5f && lamp2.enabled ==true){
+        if(timeLamp>=0.5f && lamp2.activeInHierarchy){
          
-            lamp2.enabled = false;
+            lamp2.SetActive(false);
             _audioSource.Play();
    
         }
-        if(timeLamp>=1.0f && lamp3.enabled ==true){
+        if(timeLamp>=1.0f && lamp3.activeInHierarchy){
           
-            lamp3.enabled = false;
+            lamp3.SetActive(false);
             _audioSource.Play();
         }
 
-        if(timeLamp>=1.5f && lamp4.enabled ==true){
+        if(timeLamp>=1.5f && lamp4.activeInHierarchy){
     
-            lamp4.enabled = false;
+            lamp4.SetActive(false);
             _audioSource.Play();
         }
 
-        if(timeLamp>=2.0f && lamp5.enabled ==true){
+        if(timeLamp>=2.0f && lamp5.activeInHierarchy){
       
-            lamp5.enabled = false;
+            lamp5.SetActive(false);
             _audioSource.Play();
         }
 
          if(timeLamp>=2.5f ){
             lamp6 .enabled = enabled;
             timerActive= false;
+          
         }
            
     }
