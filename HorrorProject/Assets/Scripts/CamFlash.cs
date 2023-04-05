@@ -20,13 +20,16 @@ public class CamFlash : Weapon
     public GameObject batteryHub5;
     public GameObject batteryHub6;
 
-    
+    int vidaZombieCurrent;
+
+  
 
     // Update is called once per frame
     public override void Update()
     {
         base.Update();
            if (Input.GetMouseButtonDown(0) &&  PlayerCharacter.GetComponent<Animator>().GetBool("bToTorch")&& isReadyToFlash==true &&  GetComponent<PlayerFPS>().totalBattery>0)
+         
         {
 
             Disparar();
@@ -66,14 +69,14 @@ public class CamFlash : Weapon
                 isFirstScream = false;
             }
 
-            if (hit.collider.tag == "ZombieFemale")
+            if (hit.collider.tag == "ZombieFemale" &&  hit.collider.GetComponent<Animator>().GetBool("isShooted")==false)
             {
-                hit.collider.GetComponent<FemaleZombie>().followEnemy = false;
-
-                hit.collider.GetComponent<Animator>().SetTrigger("Shooted");
-                hit.collider.GetComponent<FemaleZombie>().activeShootedAudio();
-
-
+                
+                hit.collider.GetComponent<Animator>().SetBool("isShooted",true);
+                 hit.collider.GetComponent<FemaleZombie>().activeShootedAudio();
+                hit.collider.GetComponent<ChangeMatarialZombie>().NormalMaterialZombie();
+                hit.collider.GetComponent<FemaleZombie>().agent.speed = 0.0f;
+                SpwanZombie.vidaZombie--;
 
             }
         }

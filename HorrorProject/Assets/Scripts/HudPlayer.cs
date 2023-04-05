@@ -13,6 +13,9 @@ public class HudPlayer : MonoBehaviour
      public GameObject ZombieObjetivo;
      public GameObject TargetClown;
 
+     public GameObject hudZombie;
+     public TextMeshProUGUI vidaZombie;
+
      public bool existClown = false;
     float vidaActual;
 
@@ -55,6 +58,8 @@ public class HudPlayer : MonoBehaviour
             StartCoroutine(Objective2());
            
         }
+        //VidaZombie
+        vidaZombie.text = SpwanZombie.vidaZombie.ToString();
 
         
     }
@@ -66,6 +71,7 @@ public class HudPlayer : MonoBehaviour
 			yield return new WaitForSeconds(2.0f);
             hudObjectiveClownCompleted.SetActive(false);
              ZombieObjetivo.SetActive(true);
+             hudZombie.SetActive(true);
               existClown =false;
 				
 	}

@@ -22750,7 +22750,7 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0.75
-    functionName: test
+    functionName: AttackToPlayEventAnimator
     data: 
     objectReferenceParameter: {fileID: 11500000, guid: fa51d5779cdc5ee45a2a4b9494da685f, type: 3}
     floatParameter: 0

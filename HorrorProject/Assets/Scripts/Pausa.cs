@@ -8,6 +8,8 @@ public class Pausa : MonoBehaviour
     private bool pauseActiva;
     public GameObject menuPausa;
      public GameObject menuHud;
+
+     public GameObject Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,9 @@ public class Pausa : MonoBehaviour
         menuHud.SetActive(false);
         pauseActiva =true;
          Time.timeScale =0.0f;
+         Player.GetComponent<PlayerFPS>().enabled=false;
+         Player.GetComponent<Gun>().enabled=false;
+         Player.GetComponent<CamFlash>().enabled=false;
     }
     void ResumirJuego()
     {
@@ -51,6 +56,9 @@ public class Pausa : MonoBehaviour
         menuHud.SetActive(true);
         pauseActiva = false;
         Time.timeScale =1f;
+        Player.GetComponent<PlayerFPS>().enabled=true;
+         Player.GetComponent<Gun>().enabled=true;
+         Player.GetComponent<CamFlash>().enabled=true;
     }
 
  

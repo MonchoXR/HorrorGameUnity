@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
   public void Jugar()
   {
     SceneManager.LoadScene(1);
+    Debug.Log("Entro Scene");
+  
   }
 
   public void Salir()

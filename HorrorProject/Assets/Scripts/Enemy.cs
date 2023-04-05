@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
       public AudioClip _attack;
        public AudioClip _clipShooted;
         public AudioClip _clipScreaming;
+        public AudioClip _clipManHurt;
      public Animator anim;
 
      public NavMeshAgent agent;
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
 
      Quaternion Orirotation;
     public static int numeroClowns;
+
      public bool followEnemy= false;
 
     
@@ -39,6 +41,7 @@ public class Enemy : MonoBehaviour
         // velocityToward = velocityTowardOri;
     //   Orirotation = Quaternion.Euler(0, transform.rotation.y, 0);4
         numeroClowns = 6;
+
     }
 
     // Update is called once per frame
@@ -50,8 +53,7 @@ public class Enemy : MonoBehaviour
        ChooseEnemy();
       
         VidaEnemy();
-
-       
+        
     }
 
     void LookAtPlayer(){
@@ -135,7 +137,9 @@ public class Enemy : MonoBehaviour
       
     }
 
- 
+     public void activeDeathAudio(){
+           AudioPlay(_clipDead);
+    }
   
 
 }

@@ -8,13 +8,30 @@ public class FemaleZombie : Enemy
     // Start is called before the first frame update
     public GameObject finalPoint;
 
-    public bool isRunFinalPoint=false;
-    
-    public void activeScreamAudio(){
-           AudioPlay(_clipScreaming);
+    public int contaAudioClips=0;
+
+    public AudioClip[] _clips;
+    public bool activeFinalPoint=false;
+
+    public void activeSpawnAudio(int contaAudioClips)
+    {
+        AudioPlay(_clips[contaAudioClips]);
+       
     }
-     public void activeShootedAudio(){
-           AudioPlay(_clipShooted);
+
+    public void activeShootedAudio()
+    {
+
+        StopAudioAttackAnimatorEvent();
+     
+        AudioPlay(_clipShooted);
+
+    }
+        public void activeScreamAudio()
+    {
+        AudioPlay(_clipScreaming);
+        anim.SetBool("isScreamed",true);
+
     }
 
     public void activeRunAnimtor()
@@ -25,7 +42,14 @@ public class FemaleZombie : Enemy
 
     public void attackAudioAnimatorEvent()
     {
+             PlayerFPS.vidaJugador-=25;
            AudioPlay(_attack);
+           if(PlayerFPS.vidaJugador != 0)
+           {
+               AudioPlay(_clipManHurt);
+           }
+         
+          
     }
 
        public void StopAudioAttackAnimatorEvent()
@@ -40,38 +64,35 @@ public class FemaleZombie : Enemy
 
           
     }
-    public void FinalDestinationEvent()
+    public void ActiveFinalDestinationEvent()
     {   
       
-         isRunFinalPoint=true;
+         activeFinalPoint=true;
+         
     
     }
 
-    public void StopZombieFemaleAnimator()
-    {
-        followEnemy = false;
-        
-    }
+   
 
      public override void EnemyNavMesh(bool followEnemy)
     {
     
     
         if(followEnemy ){
+            
             agent.SetDestination(player.transform.position);
             
-            // anim.SetBool("Run",true);
-            // AudioPlay(_clownNoise);
+     
         }
         else{
-            agent.speed=0f;
+            // agent.speed=0f;
         }
     
-        if(isRunFinalPoint)
+        if(activeFinalPoint)
         {
                
             agent.SetDestination(finalPoint.transform.position);
-            agent.speed=80f;
+            agent.speed=90f;
             agent.acceleration=30f;
       
         }
@@ -81,30 +102,36 @@ public class FemaleZombie : Enemy
   private void OnCollisionStay(Collision collision)
     {
 
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && anim.GetBool("isShooted")==false)
         {
 
             anim.SetTrigger("attackFemaleZombie");
-                anim.SetBool("attacktoWalk",false);
-             
-
-            followEnemy = false;
+               anim.SetBool("attacktoWalk",false);
          
+        }   
+        else{
+        
+            anim.SetBool("attacktoWalk",true);
+            // followEnemy = false;
+            //  agent.speed=0f;   
         }
     }
+
     
        private void OnCollisionExit(Collision collision)
     {
     
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && anim.GetBool("isShooted")==false)
         {
-            Debug.Log("Entro Perseguir");
+          
             anim.SetBool("attacktoWalk",true);
              followEnemy = true;
-            agent.speed=2f;
-          
+            // agent.speed=2f;
+            StopAudioAttackAnimatorEvent();
         }
 
     }
+
+
 
 }

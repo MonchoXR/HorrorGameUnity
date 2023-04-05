@@ -35,7 +35,7 @@ public  class PlayerFPS : MonoBehaviour
 
    
 
-    public static float vidaJugador =100f;
+    public static int vidaJugador =100;
     
   
     void Start()
@@ -99,7 +99,7 @@ public void BloqueoCusor()
         Cursor.visible = false;
     }
 
- private void OnCollisionEnter(Collision collision)
+ public void OnCollisionEnter(Collision collision)
  {
 
         if (collision.gameObject.tag == "Grenade")
@@ -125,7 +125,7 @@ public void BloqueoCusor()
         }
     }
 
-    private void OnTriggerStay(Collider collision)
+    public void OnTriggerStay(Collider collision)
 	{
           if (collision.gameObject.tag == "Camera")
         {

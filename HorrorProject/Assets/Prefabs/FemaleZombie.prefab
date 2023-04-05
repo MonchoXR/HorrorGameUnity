@@ -2178,6 +2178,7 @@ GameObject:
   - component: {fileID: 118483778466109091}
   - component: {fileID: 118483778466109090}
   - component: {fileID: -135987377315222443}
+  - component: {fileID: 6451777335272392405}
   m_Layer: 0
   m_Name: FemaleZombie
   m_TagString: ZombieFemale
@@ -2227,7 +2228,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.4
+  m_Radius: 0.5
   m_Height: 1.73
   m_Direction: 1
   m_Center: {x: 0, y: 0.91, z: 0.11}
@@ -2272,15 +2273,21 @@ MonoBehaviour:
   vida: 20
   explosion: {fileID: 0}
   _audioSource: {fileID: -135987377315222443}
-  _clipDead: {fileID: 0}
-  _attack: {fileID: 8300000, guid: 16e0425d19a8ff648b64d0db35c023f8, type: 3}
+  _clipDead: {fileID: 8300000, guid: 043dbc195440e3e4f9f5362b9dbe5c89, type: 3}
+  _attack: {fileID: 8300000, guid: fa23fa6d11e848d4ca2de86d101ff08e, type: 3}
   _clipShooted: {fileID: 8300000, guid: 22526c012da19434fb4fe8acf63e0c5d, type: 3}
-  _clipScreaming: {fileID: 8300000, guid: 1745045fde6e894438194a9b389e7d52, type: 3}
+  _clipScreaming: {fileID: 8300000, guid: 9184e0a26faf05f439d9eb1ea0574251, type: 3}
+  _clipManHurt: {fileID: 8300000, guid: 3f37d5c0ef0114b40b779df6934b0fca, type: 3}
   anim: {fileID: 118483778466109095}
   agent: {fileID: 118483778466109090}
   followEnemy: 1
   finalPoint: {fileID: 4634181362807069717, guid: 4736d30bde02bfb4f9691f4960aa6131, type: 3}
-  isRunFinalPoint: 0
+  contaAudioClips: 0
+  _clips:
+  - {fileID: 8300000, guid: d18282c62c7d31b4db0ccffcc5aaef70, type: 3}
+  - {fileID: 8300000, guid: 6dc56b8e89fb489419a9e6a58cc8cfe3, type: 3}
+  - {fileID: 8300000, guid: bd1c597265e45aa419fd740c061e3e09, type: 3}
+  activeFinalPoint: 0
 --- !u!195 &118483778466109090
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2291,17 +2298,17 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 2
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 1
+  m_StoppingDistance: 1.2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
   m_BaseOffset: 0
-  m_WalkableMask: 1
+  m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!82 &-135987377315222443
 AudioSource:
@@ -2314,14 +2321,14 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 34
+  Priority: 236
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -2399,6 +2406,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6451777335272392405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5874777643200714202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db37f155bc816574193bee523b57ba1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arms: {fileID: 883626078361482157}
+  dress: {fileID: 7091510242212781100}
+  eyesLash: {fileID: 4124331710152077992}
+  eyes: {fileID: 246835426819741522}
+  hair: {fileID: 8323176877804572678}
+  head: {fileID: 5145244018607149287}
+  legs: {fileID: 8971538293309287707}
+  mouthBot: {fileID: 2546695382555852857}
+  mouthTop: {fileID: 4742687447290082573}
+  tongue: {fileID: 2674709996075571803}
+  matTransparent: {fileID: 2100000, guid: 66e2f0f6b43a65f4b9ae490286dde896, type: 2}
+  body: {fileID: 2100000, guid: 33c628de166edc141ad3b7a5658081f6, type: 2}
+  bodyAlpha: {fileID: 2100000, guid: c9dd8f8a9dc0eae44b98e10d0d9d45be, type: 2}
 --- !u!1 &6028313855966245600
 GameObject:
   m_ObjectHideFlags: 0
@@ -2776,7 +2808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7091510242212781100}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.884961, z: -0.031680804}
+  m_LocalPosition: {x: 0, y: -0.884961, z: -0.031680804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1492,7 +1492,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3871086342928632339}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b94f219c86638614da03c41bcaeac09f, type: 3}
   m_Name: 
@@ -1506,10 +1506,14 @@ MonoBehaviour:
   explosion: {fileID: 0}
   _audioSource: {fileID: 3325023992174357344}
   _clipDead: {fileID: 0}
+  _attack: {fileID: 0}
+  _clipShooted: {fileID: 0}
   _clipScreaming: {fileID: 8300000, guid: 200817c73f5c0604ea5570f35299d795, type: 3}
   anim: {fileID: 0}
   agent: {fileID: 0}
   followEnemy: 0
+  finalPoint: {fileID: 0}
+  activeFinalPoint: 0
 --- !u!1 &3958605920832300597
 GameObject:
   m_ObjectHideFlags: 0

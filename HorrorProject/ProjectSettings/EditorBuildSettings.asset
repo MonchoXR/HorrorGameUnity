@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HorrorHospital FPS.unity
     guid: 0218be33a6d93954d9918a4a6a2ebccb
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 42caf188e08843e429afbca21b3b70cd
   m_configObjects: {}

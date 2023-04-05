@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Clown : Enemy
 {
-     public AudioClip _clipManHurt;
+     
       public AudioClip _clownNoise;
       
     public override void Start()
@@ -52,8 +52,8 @@ public class Clown : Enemy
         }
 
     }
-    void test(){
-         PlayerFPS.vidaJugador-=25f;
+    void AttackToPlayEventAnimator(){
+         PlayerFPS.vidaJugador-=25;
          AudioPlay(_clipManHurt);
    
     }
