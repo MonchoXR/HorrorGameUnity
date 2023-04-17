@@ -6,11 +6,12 @@ public class Clown : Enemy
 {
      
       public AudioClip _clownNoise;
+       public AudioClip _chaseClown;
       
     public override void Start()
     {
         base.Start();
-        // 
+          StartCoroutine(WaitForAttack());
 
           
     }
@@ -53,7 +54,7 @@ public class Clown : Enemy
 
     }
     void AttackToPlayEventAnimator(){
-         PlayerFPS.vidaJugador-=25;
+         PlayerFPS.vidaJugador-=20;
          AudioPlay(_clipManHurt);
    
     }
@@ -68,6 +69,15 @@ public class Clown : Enemy
     }
 
 
-
+  	IEnumerator WaitForAttack()
+	{	
+            yield return new WaitForSeconds(7.0f);
+            
+			followEnemy=true;
+            yield return new WaitForSeconds(2.0f);
+            AudioPlay(_clownNoise);
+            SonidoGlobal._audioSourceBlobal.clip= _chaseClown;
+             SonidoGlobal._audioSourceBlobal.Play();
+	}
 
 }

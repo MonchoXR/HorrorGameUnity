@@ -9,15 +9,17 @@ public class OpenDoor : MonoBehaviour {
 
 	public AudioClip OpenAudio;
 	public AudioClip CloseAudio;
+	public AudioClip soundRoom;
 	private bool AudioS;
 
 	private Vector3 defaultRot;
 	private Vector3 openRot;
 	private bool open;
 	private bool enter;
+   
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 			defaultRot = transform.eulerAngles;
 			openRot = new Vector3 (defaultRot.x, defaultRot.y + DoorOpenAngle, defaultRot.z);
@@ -29,6 +31,9 @@ public class OpenDoor : MonoBehaviour {
 			if (AudioS == false) {
 				gameObject.GetComponent<AudioSource> ().PlayOneShot (OpenAudio);
 				AudioS = true;
+			
+			SonidoGlobal._audioSourceBlobal.clip = soundRoom;
+			SonidoGlobal._audioSourceBlobal.Play();
 			}
 			transform.eulerAngles = Vector3.Slerp (transform.eulerAngles, openRot, Time.deltaTime * smooth);
 		} else {
@@ -41,6 +46,7 @@ public class OpenDoor : MonoBehaviour {
 		}
 		if (Input.GetKeyDown (KeyCode.E) && enter) {
 			open = !open;
+
 		}
 }
 

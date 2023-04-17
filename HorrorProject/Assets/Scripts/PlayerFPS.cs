@@ -17,7 +17,9 @@ public  class PlayerFPS : MonoBehaviour
 
     public Vector2 sensibilidadMouse;
     public Transform Camera;
-   
+
+
+    public  Vector3 posInicial;
     private Vector3 rotate;
     public List<Granada> _inventarioGranada = new List<Granada>();
     public List<Battery> _inventarioBattery = new List<Battery>();
@@ -33,23 +35,32 @@ public  class PlayerFPS : MonoBehaviour
 
      public GameObject HudObjectiveCameraCompleted;
 
-   
-
-    public static int vidaJugador =100;
+    
+    
+    // public int vidaPlayer = 100;
+    public static int vidaJugador = 100;
     
   
     void Start()
 
     {
-     
+       posInicial = transform.position;
         BloqueoCusor();
 
     }
 
+    void Respawn()
+    {
+        transform.position = posInicial;
+    }
+
     void Update()
 
-    {
-
+    {   
+        if(transform.position.y <= -15.0f)
+        {
+            Respawn();
+        }
         Move();
 
         MouseLook();
@@ -57,8 +68,11 @@ public  class PlayerFPS : MonoBehaviour
         {
             HudCameraTutoria.SetActive(false);
         }
+
+
+    
+  
         
-     
     }
 
     void Move()
@@ -75,6 +89,7 @@ public  class PlayerFPS : MonoBehaviour
 
         // rb.AddForce(inputPlayer * velocidadMovimiento * Time.deltaTime);
 
+    
     }
 
 void MouseLook()
@@ -91,6 +106,8 @@ void MouseLook()
     Camera.localEulerAngles = Vector3.right*angle;
 
     }
+
+
 
 
 public void BloqueoCusor()

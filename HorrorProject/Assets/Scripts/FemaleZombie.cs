@@ -42,9 +42,9 @@ public class FemaleZombie : Enemy
 
     public void attackAudioAnimatorEvent()
     {
-             PlayerFPS.vidaJugador-=25;
+             PlayerFPS.vidaJugador-=10;
            AudioPlay(_attack);
-           if(PlayerFPS.vidaJugador != 0)
+           if(PlayerFPS.vidaJugador >= 0)
            {
                AudioPlay(_clipManHurt);
            }

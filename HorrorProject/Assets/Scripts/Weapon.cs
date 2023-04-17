@@ -23,8 +23,8 @@ public class Weapon : MonoBehaviour
              PlayerCharacter.GetComponent<Animator>().SetBool("bToRifle",true);
         }
 
-          //  if(Input.GetKeyDown(KeyCode.Alpha2) && PlayerFPS.isEnableClamFlash == true)
-             if(Input.GetKeyDown(KeyCode.Alpha2))
+           if(Input.GetKeyDown(KeyCode.Alpha2) && PlayerFPS.isEnableClamFlash == true)
+         
         {
              PlayerCharacter.GetComponent<Animator>().SetBool("bToTorch",true);
              PlayerCharacter.GetComponent<Animator>().SetBool("bToRifle",false);

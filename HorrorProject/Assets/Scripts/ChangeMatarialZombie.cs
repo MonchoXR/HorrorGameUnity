@@ -24,7 +24,7 @@ public class ChangeMatarialZombie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        NormalMaterialZombie();
+        TransparentZombie();
      
     }
 

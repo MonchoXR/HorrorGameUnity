@@ -12,6 +12,7 @@ public class CamFlash : Weapon
     public Light flashLight;
     bool isReadyToFlash=true;
 
+    public GameObject hudKillClownTutorial;
     public GameObject NoBatteries;
     public GameObject batteryHub1;
     public GameObject batteryHub2;
@@ -57,7 +58,7 @@ public class CamFlash : Weapon
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
             Debug.Log("Disparo en " + hit.collider.gameObject.name);
-            if (hit.collider.name == "FemaleZombieFirst")
+            if (hit.collider.name == "FemaleZombieFirst" && GetComponent<HudPlayer>().existClown==false)
             {
 
                 hit.collider.GetComponent<Animator>().SetTrigger("FirstScream");
@@ -67,6 +68,10 @@ public class CamFlash : Weapon
                 }
 
                 isFirstScream = false;
+            }
+            else if(hit.collider.name == "FemaleZombieFirst" && GetComponent<HudPlayer>().existClown==true){
+                hudKillClownTutorial.SetActive(true);
+                 StartCoroutine(killClownFisrt());
             }
 
             if (hit.collider.tag == "ZombieFemale" &&  hit.collider.GetComponent<Animator>().GetBool("isShooted")==false)
@@ -101,6 +106,15 @@ public class CamFlash : Weapon
         isReadyToFlash= true;
 
     }
+
+    IEnumerator killClownFisrt()
+    {
+
+        yield return new WaitForSeconds(2.0f);
+        hudKillClownTutorial.SetActive(false);
+
+    }
+
 
 
     void HudBatteries()

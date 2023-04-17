@@ -8,9 +8,12 @@ public class SpwanZombie : MonoBehaviour
     public GameObject Zombie;
     public Transform[] poitTransform;
     GameObject ZombienInstantie;
+    public GameObject hudWin;
     int contaAudio= 0;
     public static int vidaZombie = 3;
 
+    public AudioClip _audioGameOver;
+     public AudioClip _clipBattleZombie;
     
     Transform currentPoint;
     int index;
@@ -29,6 +32,8 @@ public class SpwanZombie : MonoBehaviour
         currentPoint = poitTransform[index];
 
         SpawnZombie();
+        SonidoGlobal._audioSourceBlobal.clip = _clipBattleZombie;
+        SonidoGlobal._audioSourceBlobal.Play();
         
     }
 
@@ -40,6 +45,12 @@ public class SpwanZombie : MonoBehaviour
         {
             ZombienInstantie.GetComponent<FemaleZombie>().anim.SetTrigger("died");
             ZombienInstantie.GetComponent<CapsuleCollider>().enabled= false;
+            hudWin.SetActive(true);
+            SonidoGlobal._audioSourceBlobal.clip=_audioGameOver;
+             SonidoGlobal._audioSourceBlobal.Play();
+              Cursor.lockState = CursorLockMode.None;
+             Cursor.visible = true;
+             vidaZombie=-1;
         }
         else if (ZombienInstantie == null)
         {

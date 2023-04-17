@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class ParedCollisionEvent :  MonoBehaviour 
 {
+  public AudioSource _audioSource;
    [SerializeField] private UnityEvent ParedEvent; //Importante hacer esta definción
    
     private void OnTriggerEnter(Collider collision)
@@ -18,10 +19,20 @@ public class ParedCollisionEvent :  MonoBehaviour
        
         }
     }
-    private void OnTriggerExit(Collider collision)
+    public void DoorNoiseAudio()
     {
       
-
+      StartCoroutine(DoorNoise());
 
     }
+
+     	IEnumerator DoorNoise()
+	{	  
+        
+            yield return new WaitForSeconds(4.0f);
+            _audioSource.Play();
+
+           
+            Destroy(this,4f);
+	}
 }

@@ -15,7 +15,8 @@ public class HudPlayer : MonoBehaviour
 
      public GameObject hudZombie;
      public TextMeshProUGUI vidaZombie;
-
+     public AudioClip _clipAfterClown;
+   
      public bool existClown = false;
     float vidaActual;
 
@@ -52,14 +53,19 @@ public class HudPlayer : MonoBehaviour
         }
         else if(existClown == true)
         {
-            
+            SonidoGlobal._audioSourceBlobal.clip = _clipAfterClown;
+            SonidoGlobal._audioSourceBlobal.Play();
             TargetClown.SetActive(false);
             hudObjectiveClownCompleted.SetActive(true);
             StartCoroutine(Objective2());
            
         }
         //VidaZombie
-        vidaZombie.text = SpwanZombie.vidaZombie.ToString();
+        if(SpwanZombie.vidaZombie>=0)
+        {
+            vidaZombie.text = SpwanZombie.vidaZombie.ToString();
+        }
+        
 
         
     }
@@ -72,11 +78,12 @@ public class HudPlayer : MonoBehaviour
             hudObjectiveClownCompleted.SetActive(false);
              ZombieObjetivo.SetActive(true);
              hudZombie.SetActive(true);
+    
               existClown =false;
 				
 	}
 
-    public void ExistClown(){
+    public void ExistClownWallEvet(){
         existClown = true;
     }
 
